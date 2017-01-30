@@ -1,0 +1,26 @@
+/*
+  ## Some button
+  ```
+    <div class="button">Click me!</div>
+  ```
+*/
+
+.button {
+  width: 100px;
+  height: 40px;
+  background: #ff2200;
+}
+
+
+/*
+  ## Very nice button
+  ```
+  <div class="button button--very-nice">Click me!</div>
+  ```
+*/
+
+.button--very-nice {
+  width: 100px;
+  height: 25px;
+  background: red;
+}
