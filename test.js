@@ -1,7 +1,7 @@
 // var casper = require('casper').create();
 var phantomcss = require('phantomcss')
 var components = require('./components.json')
-
+var exec = require('child_process').spawn
 casper.test.begin( 'Coffee machine visual tests', function ( test ) {
   phantomcss.init( {
     rebase: casper.cli.get( "rebase" ),
@@ -13,13 +13,16 @@ casper.test.begin( 'Coffee machine visual tests', function ( test ) {
     addLabelToFailedImage: false,
   })
   casper.start('http://localhost:8000/patterns.html')
-  components.forEach(function(component) {
-    component.patterns.forEach(function(pattern) {
-      casper.then(function() { phantomcss.screenshot('#' + component.name + '-' + pattern.id, component.name + '-' + pattern.id) })
+    .viewport(1024, 768).then(function() {
+      components.forEach(function(component) {
+        component.patterns.forEach(function(pattern) {
+          casper.then(function() { phantomcss.screenshot('#' + component.name + '-' + pattern.id, component.name + '-' + pattern.id) })
+        })
+      })
+      casper.then( function now_check_the_screenshots() {
+        casper.wait(1000)
+        phantomcss.compareAll();
+      } );
     })
-  })
-  casper.then( function now_check_the_screenshots() {
-    phantomcss.compareAll();
-  } );
   casper.run()
 })

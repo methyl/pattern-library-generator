@@ -10,6 +10,13 @@
     "marked": "^0.3.6",
     "phantomcss": "^1.1.4",
     "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react-dom": "^15.4.2",
+    "sharp": "^0.17.1",
+    "slimerjs": "^0.10.2"
+  },
+  "scripts": {
+    "generate": "node generatePatternLibrary.js",
+    "test": "node_modules/casperjs/bin/casperjs test test.js --engine=slimerjs",
+    "build": "npm run generate && npm run test"
   }
 }

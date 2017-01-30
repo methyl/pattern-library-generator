@@ -8,11 +8,11 @@
 */
 
 .my-form {
-  background: #ccc;
+  background: #eee;
   width: 50%;
   padding: 30px;
 }
 
 .my-form input {
-  border: 2px dashed #eee
+  border: 2px dashed #ddd
 }
